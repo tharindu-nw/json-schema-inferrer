@@ -9,13 +9,8 @@ import static com.saasquatch.jsonschemainferrer.JunkDrawer.newArray;
 import static com.saasquatch.jsonschemainferrer.JunkDrawer.newObject;
 import static com.saasquatch.jsonschemainferrer.JunkDrawer.stream;
 import static com.saasquatch.jsonschemainferrer.JunkDrawer.stringColToArrayDistinct;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.Objects;
-import java.util.Optional;
-import java.util.Set;
+
+import java.util.*;
 import java.util.stream.Collectors;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
@@ -143,7 +138,7 @@ public final class JsonSchemaInferrer {
       return null;
     }
     // All the field names across all samples combined
-    final Set<String> allFieldNames = getAllFieldNames(objectNodes);
+    final List<String> allFieldNames = getAllFieldNames(objectNodes);
     final ObjectNode properties = newObject();
     for (String fieldName : allFieldNames) {
       // Get the vals from samples that have the field name. vals cannot be empty.

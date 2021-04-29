@@ -2,17 +2,7 @@ package com.saasquatch.jsonschemainferrer;
 
 import java.math.BigDecimal;
 import java.math.BigInteger;
-import java.util.AbstractMap;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.Locale;
-import java.util.Map;
-import java.util.Objects;
-import java.util.Set;
-import java.util.Spliterators;
+import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 import java.util.stream.StreamSupport;
@@ -157,12 +147,13 @@ final class JunkDrawer {
 
   /**
    * Get all the unique field names across multiple {@link ObjectNode}s
+   * @return
    */
-  static Set<String> getAllFieldNames(@Nonnull Iterable<? extends JsonNode> objectNodes) {
+  static List<String> getAllFieldNames(@Nonnull Iterable<? extends JsonNode> objectNodes) {
     return stream(objectNodes)
         .flatMap(j -> stream(j.fieldNames()))
         .filter(Objects::nonNull)
-        .collect(Collectors.toSet());
+        .collect(Collectors.toList());
   }
 
   /**
